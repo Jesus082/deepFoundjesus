@@ -27,6 +27,7 @@ class MyProductsComponent extends Component
 
     public function deleteProduct($id){
         $product = Producto::find($id);
+        dd();
         $product->delete();
     }
 
