@@ -1,0 +1,102 @@
+#subir-producto-form {
+    padding: 19px;
+}
+
+#subir-producto-form form{
+    width: 80%;
+}
+
+#subir-producto-form .error-message {
+    margin-top: 5px;
+}
+
+#subir-producto-form .form-group {
+    margin-bottom: 20px;
+}
+
+#subir-producto-form .form-label {
+    font-weight: bold;
+}
+
+#subir-producto-form .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#subir-producto-form .character-count {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #777;
+}
+
+#subir-producto-form #images{
+    margin-left: 15px;
+}
+
+#subir-producto-form .card {
+    padding: 0px;
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+#subir-producto-form .card img {
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+#subir-producto-form .card .btn-remove-image {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ff0000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#subir-producto-form .card:hover {
+    transform: scale(1.05);
+}
+
+#subir-producto-form .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#subir-producto-form #image-upload{
+    padding: 0px;
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.icon-lg {
+    font-size: 3rem;
+}
+
+
+#subir-producto-form .btn-primary:hover {
+    background-color: #0069d9;
+}
