@@ -1,15 +1,17 @@
 <x-app-layout>
-    <h1>iepa</h1>
-
-
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                @livewire('my-products-component')
+    <link rel="stylesheet" href="{{ asset('assets/css/mis-productos.css') }}">
+    <div class="container-fluid" id="container_mis_productos">
+        <div class="row">
+            <div class="col-xl-2 col-lg-1"></div> <!-- Espacio en blanco a la izquierda -->
+            <div class="col-xl-8 col-lg-10 col-md-12">
+                <div class="bg-white overflow-hidden sm:rounded-lg">
+                    <h4 class="h4 ml-3">Mis anuncios</h4>
+                    <div class="row pr-3 pl-3">
+                        @livewire('my-products-component')
+                    </div>
+                </div>
             </div>
+            <div class="col-xl-2 col-lg-1"></div> <!-- Espacio en blanco a la izquierda -->
         </div>
     </div>
-
-
 </x-app-layout>

@@ -10,10 +10,11 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Producto;
+use App\Models\ProductLike;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -65,5 +66,10 @@ class User extends Authenticatable
     public function productos() : hasMany
     {
         return $this->hasMany(Producto::class, 'user_id', 'id');
+    }
+
+    public function likes(): HasMany
+    {
+        return $this->hasMany(ProductLike::class);
     }
 }

@@ -4,7 +4,7 @@
             <div class="carousel-inner">
                 @foreach ($product->images as $key => $image)
                     <div class="carousel-item @if ($key === 0) active @endif">
-                        <img src="{{ Storage::url($image->image) }}" class="d-block w-100" alt="">
+                        <img src="{{ asset('storage/' . $image->image) }}" class="d-block w-100" alt="">
                     </div>
                 @endforeach
             </div>

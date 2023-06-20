@@ -16,7 +16,14 @@ return new class extends Migration
             $table->string('name', 30);
             $table->text('description', 100);
             $table->float('price');
+            $table->integer('manufacturing')->nullable();
+            $table->boolean('reserved')->default(false);
+            $table->boolean('sold')->default(false);
+            $table->string('autonomy', 70);
+            $table->string('province', 70);
+            $table->string('municipality', 70);
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('status_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('subcategory_id');
             $table->timestamps();

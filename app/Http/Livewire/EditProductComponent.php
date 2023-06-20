@@ -8,20 +8,29 @@ use App\Models\Subcategory;
 
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Illuminate\Support\Facades\Route;
 use Livewire\WithFileUploads;
 use App\Models\User;
 use App\Models\Image;
+use App\Models\Status;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 
 class EditProductComponent extends Component
 
 {
     use WithFileUploads;
-    public $product, $name, $description, $price, $category, $subcategory, $newImage;
+    public $product, $name, $description, $price, $status, $category, $subcategory, $newImage;
+    public $autonomias, $provincias, $municipios;
+    public $manufacturing;
+    public $selectedAutonomia, $selectedProvincia, $selectedMunicipio;
     public $categories = [], $subcategories = [];
     public $images = [], $tmpImages = [];
+    public $statuses = [];
+    public $descriptionLength;
 
     public function render()
     {
@@ -30,17 +39,35 @@ class EditProductComponent extends Component
 
     public function mount($id)
     {
+        $this->selectedAutonomia = '';
+        $this->selectedProvincia = '';
+        $this->selectedMunicipio = '';
+
+        $autonomiasJson = file_get_contents(public_path('ubicaciones/autonomias.json'));
+        $provinciasJson = file_get_contents(public_path('ubicaciones/provincias-aut.json'));
+        $municipiosJson = file_get_contents(public_path('ubicaciones/municipios.json'));
+
+        $this->autonomias = collect(json_decode($autonomiasJson, true));
+        $this->provincias = collect(json_decode($provinciasJson, true));
+        $this->municipios = collect(json_decode($municipiosJson, true));
         // Cargar el producto a partir del ID
         $this->product = Producto::find($id);
 
         $this->name = $this->product->name;
         $this->description = $this->product->description;
         $this->price = $this->product->price;
+        $this->manufacturing = $this->product->manufacturing;
+        $this->selectedAutonomia = $this->product->autonomy;
+        $this->selectedProvincia = $this->product->province;
+        $this->selectedMunicipio = $this->product->municipality;
         $this->category = $this->product->category_id;
+        $this->status = $this->product->status_id;
         $this->images = $this->product->images->toArray();
         $this->categories = Category::all();
         $this->updatedCategory($this->category);
         $this->subcategory = $this->product->subcategory_id;
+        $this->statuses = Status::all();
+
     }
 
     public function updatedCategory($id)
@@ -70,14 +97,19 @@ class EditProductComponent extends Component
 
     public function updateProduct($id){
 
-        $user = User::find(auth()->id());
+
         $this->product->name = $this->name;
         $this->product->description = $this->description;
         $this->product->price = $this->price;
+        $this->product->manufacturing = $this->manufacturing;
+        $this->product->autonomy = $this->selectedAutonomia;
+        $this->product->province = $this->selectedProvincia;
+        $this->product->municipality = $this->selectedMunicipio;
         $this->product->category_id = $this->category;
+        $this->product->status_id = $this->status;
         $this->product->subcategory_id = $this->subcategory;
-
         $this->product->images()->delete();
+
 
         foreach ($this->images as $imageData) {
             $this->product->images()->create([
@@ -95,5 +127,15 @@ class EditProductComponent extends Component
         $this->product->save();
 
         return redirect()->route('mis-productos');
+    }
+
+    public function updatedDescription()
+    {
+        $this->descriptionLength = strlen($this->description);
+    }
+    public function checkDescriptionLength()
+    {
+        $maxLength = 300;
+        $this->description = mb_substr($this->description, 0, $maxLength);
     }
 }

@@ -1,3 +1,5 @@
+/*
+
 #subir-producto-form {
     padding: 19px;
 }
@@ -100,3 +102,160 @@
 #subir-producto-form .btn-primary:hover {
     background-color: #0069d9;
 }
+*/
+
+#buscador-livewire input{
+    height: 50px;
+    font-size: 14px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+    background-color: #fff;
+    border: 1px solid #000;
+    box-shadow: none;
+}
+
+#logo-pagina{
+    justify-content: center;
+
+    width: 30%;
+    height: 30%;
+}
+
+#subir-producto-form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#subir-producto-form form{
+    width: 100%;
+}
+
+#subir-producto-form form #price-status input{
+    width: 45%;
+}
+
+#subir-producto-form form #price-status select{
+    width: 45%;
+}
+
+#subir-producto-form form .form-group{
+    margin-top: 10px;
+}
+
+#subir-producto-form form input{
+    border-radius: 5px;
+}
+
+#subir-producto-form form textarea{
+    border-radius: 5px;
+}
+
+#subir-producto-form form .title-caracteres{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+#subir-producto-form form .title-caracteres p{
+    font-size: 12px;
+    margin-top: 5px;
+    margin-right: 4px;
+}
+
+#subir-producto-form form .form-group select{
+    width: 45%;
+}
+
+#subir-producto-form form .form-group #categorias{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+#subir-producto-form form .container-images{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: 2px solid blue;
+    padding: 0px;
+    margin: 0px;
+}
+
+#subir-producto-form form .container-images .card img{
+    padding: 0px;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#subir-producto-form form .container-images .card{
+    padding: 0px;
+    margin:10px 0px 10px 10px;
+    width: 90%;
+    height: 100px;
+    border-radius: 20px;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+#subir-producto-form form .container-images .card:hover{
+    transform: scale(1.05);
+}
+
+#subir-producto-form form .container-images .card:not(:nth-child(3n+1)){
+    margin-left: 12px;
+}
+
+
+#subir-producto-form form .container-images .card .remove-image{
+    position: absolute;
+    top: -8px;
+    right: -4px;
+    z-index: 100;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ff0000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#subir-producto-form form #image-upload{
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+#subir-producto-form form .subir-producto{
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+#subir-producto-form form #anioFabricacion select{
+    width: 45%;
+}
+
+/*
+@media only screen and (max-width: 600px) {
+    #subir-producto-form form{
+        width: 100%;
+    }
+}
+
+*/

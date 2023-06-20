@@ -18,12 +18,17 @@
                     </x-nav-link>
 
                     <x-nav-link href="{{ route('subir-producto') }}" :active="request()->routeIs('subir-producto')">
-                        {{ __('subir-producto') }}
+                        {{ __('subir producto') }}
 
                     </x-nav-link>
 
                     <x-nav-link href="{{ route('mis-productos') }}" :active="request()->routeIs('mis-productos')">
-                        {{ __('mis-productos') }}
+                        {{ __('mis productos') }}
+
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('guardados') }}" :active="request()->routeIs('guardados')">
+                        {{ __('Guardados') }}
 
                     </x-nav-link>
 
@@ -34,7 +39,7 @@
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
-                        <x-dropdown align="right" width="60">
+                        <x-dropdown alint="right" width="60">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
@@ -153,6 +158,18 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                {{ __('subir producto') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                {{ __('mis productos') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                {{ __('Guardados') }}
             </x-responsive-nav-link>
 
         </div>

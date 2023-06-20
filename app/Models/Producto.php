@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Subcategory;
+use App\Models\ProductLike;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,9 @@ class Producto extends Model
 
     protected $guarded = [];
 
+    protected $withCount = [
+        'likes',
+    ];
      /**
      * Get the user that owns the Producto
      *
@@ -42,6 +46,10 @@ class Producto extends Model
         return $this->belongsTo(Subcategory::class);
     }
 
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Status::class);
+    }
     /**
      * Get all of the images for the Producto
      *
@@ -50,6 +58,37 @@ class Producto extends Model
     public function images(): HasMany
     {
         return $this->hasMany(Image::class);
+    }
+
+    public function likes(): HasMany
+    {
+        return $this->hasMany(ProductLike::class);
+    }
+
+    public function isLiked(): bool
+    {
+        if (auth()->user()) {
+            return auth()->user()->likes()->forProduct($this)->count();
+        }
+
+        if (($ip = request()->ip()) && ($userAgent = request()->userAgent())) {
+            return $this->likes()->forIp($ip)->forUserAgent($userAgent)->count();
+        }
+
+        return false;
+    }
+
+    public function removeLike(): bool
+    {
+        if (auth()->user()) {
+            return auth()->user()->likes()->forProduct($this)->delete();
+        }
+
+        if (($ip = request()->ip()) && ($userAgent = request()->userAgent())) {
+            return $this->likes()->forIp($ip)->forUserAgent($userAgent)->delete();
+        }
+
+        return false;
     }
 
 }
