@@ -3,12 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "develop": "concurrently \"react-scripts start\" \" nodemon ./src/services/server.js\"",
-        "start": "concurrently \"react-scripts start\" \" node ./src/services/server.js\"",
-        "build": "CI=false react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "seeds": "node ./src/services/seeds/index.js"
+        "build": "vite build"
     },
     "devDependencies": {
         "@alpinejs/focus": "^3.10.5",
